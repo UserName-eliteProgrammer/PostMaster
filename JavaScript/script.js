@@ -115,7 +115,11 @@ function request(url) {
 
     setTimeout(() => {
       if (this.status == 200) {
-        prismElement.innerHTML = this.responseText;
+        prismElement.innerHTML = JSON.stringify(
+          JSON.parse(this.responseText),
+          null,
+          4
+        );
         Prism.highlightAll(); //for highlightText
       } else if (this.status == 201) {
         // post req

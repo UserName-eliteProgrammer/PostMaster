@@ -29,10 +29,9 @@
   margin-bottom: 20px;
 }
 
-/* #response-prism
-{   
-     overflow-y: hidden; 
-} */
+#responseDiv {
+  width: 70%;
+}
 
 #response-prism-pre {
   margin-top: 40px;

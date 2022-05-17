@@ -1,3 +1,6 @@
 https://jsonplaceholder.typicode.com/posts
 
 https://api.quotable.io/random
+
+
+https://reqres.in/api/users
