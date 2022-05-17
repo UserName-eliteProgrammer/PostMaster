@@ -52,6 +52,7 @@ jsonParameterRadio.addEventListener("click", () => {
 reqType_Get.addEventListener("click", () => {
   jsonDiv.style.display = "none";
   contentTypeBox.style.display = "none";
+  customParaAddBtn.style.display = "none";
 });
 
 reqType_Post.addEventListener("click", () => {
