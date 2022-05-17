@@ -7,7 +7,7 @@
 }
 
 #customParameters {
-  margin-top: 60px;
+  margin-top: 40px;
 }
 
 #jsonDiv {
@@ -25,7 +25,7 @@
 #plusBtn {
   display: flex;
   justify-content: center;
-  margin-top: 60px;
+  margin-top: 40px;
   margin-bottom: 20px;
 }
 
@@ -37,4 +37,20 @@
 #response-prism-pre {
   margin-top: 40px;
   height: 60vh;
+}
+
+@keyframes loading {
+  from {
+    width: 0vw;
+  }
+  to {
+    width: 100vw;
+  }
+}
+
+.loader {
+  width: 0vw;
+  height: 2px;
+  background-color: red;
+  animation: loading 30s linear;
 }

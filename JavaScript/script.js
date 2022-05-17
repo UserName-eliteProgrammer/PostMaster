@@ -27,6 +27,8 @@ const responseDiv = document.getElementById("responseDiv");
 
 const prismElement = document.getElementById("response-prism");
 
+const loader = document.getElementById("loader");
+
 // intial settings
 customParameterDiv.style.display = "none";
 customParaAddBtn.style.display = "none";
@@ -80,6 +82,10 @@ function request(url) {
   const reqType = reqType_Get.checked == true ? "GET" : "POST";
   let data = null;
 
+  // loader
+  loader.classList.add("loader");
+  loader.style.animationDuration = "30s";
+
   // if reqType = post then we have to collect the data from user.
   if (reqType == "POST") {
     const contentType =
@@ -105,15 +111,22 @@ function request(url) {
   xhrObj.open(reqType, url, true);
 
   xhrObj.onload = function () {
-    if (this.status == 200) {
-      prismElement.innerHTML = this.responseText;
-      Prism.highlightAll(); //for highlightText
-    } else if (this.status == 201) {
-      // post req
-      console.log("succuss, post request made successfully.");
-      prismElement.innerHTML = this.responseText;
-      Prism.highlightAll(); // for highlightText
-    }
+    loader.style.animationDuration = "6s";
+
+    setTimeout(() => {
+      if (this.status == 200) {
+        prismElement.innerHTML = this.responseText;
+        Prism.highlightAll(); //for highlightText
+      } else if (this.status == 201) {
+        // post req
+        console.log("succuss, post request made successfully.");
+        prismElement.innerHTML = this.responseText;
+        Prism.highlightAll(); // for highlightText
+      } else {
+        prismElement.innerHTML = "😬Something went wrong!!";
+      }
+      loader.classList.remove("loader");
+    }, 4000);
   };
 
   if (reqType == "POST") {
@@ -126,6 +139,7 @@ function request(url) {
 
 // submit button
 submitBtn.addEventListener("click", () => {
+  prismElement.innerHTML = "You Will Get Your Response Here.";
   const url = urlInp.value;
   request(url);
 });
