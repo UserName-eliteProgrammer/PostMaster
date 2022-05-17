@@ -125,7 +125,11 @@ function request(url) {
       } else if (this.status == 201) {
         // post req
         console.log("succuss, post request made successfully.");
-        prismElement.innerHTML = this.responseText;
+        prismElement.innerHTML = JSON.stringify(
+          JSON.parse(this.responseText),
+          null,
+          4
+        );
         Prism.highlightAll(); // for highlightText
       } else {
         prismElement.innerHTML = "😬Something went wrong!!";
